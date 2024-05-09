@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.spring.mapper.StudentMapper">
+    <resultMap id="result" type="org.example.spring.entity.Student">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+        <result column="className" jdbcType="VARCHAR" property="className" />
+        <result column="gender" jdbcType="TINYINT" property="gender" />
+        <result column="is_deleted" jdbcType="BOOLEAN" property="is_deleted" />
+
+    </resultMap>
+
+    <select id="findAllStudents" resultType="org.example.spring.entity.Student">
+        select  * from students;
+    </select>
+
+    <select id="findStudentsById" resultType="org.example.spring.entity.Student">
+        select * from students where id=#{id};
+    </select>
+</mapper>
