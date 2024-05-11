@@ -19,6 +19,19 @@ public class StudentService {
 
     public Student findStudentById(int id) {
         return studentMapper.findStudentById(id);
+    }
 
+    public Student findStudentByName(String name) {
+        return studentMapper.findStudentByName(name);
+    }
+
+    public boolean deleteStudentById(int id) {
+        int affectedRows = studentMapper.deleteStudentById(id);
+        return affectedRows > 0;
+    }
+
+    public boolean addStudent(Student student) {
+        int affectedRows = studentMapper.addStudent(student);
+        return affectedRows > 0;
     }
 }

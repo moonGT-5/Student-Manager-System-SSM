@@ -8,6 +8,13 @@ import java.util.List;
 @Mapper
 public interface StudentMapper {
     List<Student> findAllStudents();
+
     Student findStudentById(int id);
 
+    Student findStudentByName(String name);
+
+    int deleteStudentById(int id);
+
+    int addStudent(Student student);
 }
+

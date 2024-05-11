@@ -7,7 +7,7 @@ public class Student {
     private int gender;
     private String address;
     private String className;
-    private int is_daleted;
+    private int is_deleted;
 
     public int getId() {
         return id;
@@ -57,12 +57,12 @@ public class Student {
         this.className = className;
     }
 
-    public int getIs_daleted() {
-        return is_daleted;
+    public int getIs_deleted() {
+        return is_deleted;
     }
 
-    public void setIs_daleted(int is_daleted) {
-        this.is_daleted = is_daleted;
+    public void setIs_deleted(int is_deleted) {
+        this.is_deleted = is_deleted;
     }
 
     @Override
@@ -74,7 +74,7 @@ public class Student {
                 ", gender=" + gender +
                 ", address='" + address + '\'' +
                 ", className='" + className + '\'' +
-                ", is_daleted=" + is_daleted +
+                ", is_deleted=" + is_deleted +
                 '}';
     }
 }
