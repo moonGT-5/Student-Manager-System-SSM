@@ -36,9 +36,19 @@
         where id = #{id};
     </update>
 
-    <insert id="addStudent" parameterType="org.example.spring.entity.Student" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO students (name, age, gender, address, ClassName, is_deleted)
-        VALUES (#{name}, #{age}, #{gender}, #{address}, #{ClassName}, 0)
+    <insert id="insertStudent" parameterType="org.example.spring.entity.Student">
+        INSERT INTO students (name, age, gender, address, className, is_deleted)
+        VALUES (#{name}, #{age}, #{gender}, #{address}, #{className}, #{is_deleted})
     </insert>
 
+    <update id="updateStudentById" parameterType="org.example.spring.entity.Student">
+        UPDATE students
+        SET name = #{name},
+            age = #{age},
+            gender = #{gender},
+            address = #{address},
+            className = #{className},
+            is_deleted = #{is_deleted}
+        WHERE id = #{id}
+    </update>
 </mapper>

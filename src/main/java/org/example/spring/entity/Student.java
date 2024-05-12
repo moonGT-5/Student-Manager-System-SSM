@@ -7,7 +7,7 @@ public class Student {
     private int gender;
     private String address;
     private String className;
-    private int is_deleted;
+    private int is_deleted = 0;
 
     public int getId() {
         return id;

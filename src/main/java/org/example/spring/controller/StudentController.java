@@ -3,7 +3,6 @@ package org.example.spring.controller;
 import org.example.spring.entity.Student;
 import org.example.spring.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,13 +51,18 @@ public class StudentController {
         }
     }
 
-    @PostMapping("/students/submit")
-    public ResponseEntity<?> submitForm(@RequestBody Student student) {
-        try {
-            studentService.addStudent(student);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    @PostMapping("/submit")
+    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
+        Student createdStudent = studentService.createStudent(student);
+        return ResponseEntity.ok(createdStudent);
+    }
+    @PostMapping("/update")
+    public ResponseEntity<Student> updateStudent(@RequestBody Student student) {
+        Student updatedStudent = studentService.updateStudentById(student);
+        if (updatedStudent != null) {
+            return ResponseEntity.ok(updatedStudent);
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
 }

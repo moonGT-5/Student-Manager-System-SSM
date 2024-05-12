@@ -30,8 +30,14 @@ public class StudentService {
         return affectedRows > 0;
     }
 
-    public boolean addStudent(Student student) {
-        int affectedRows = studentMapper.addStudent(student);
-        return affectedRows > 0;
+    public Student createStudent(Student student) {
+        studentMapper.insertStudent(student);
+        return student;
+    }
+
+    public Student updateStudentById(Student student) {
+        // 更新学生信息
+        studentMapper.updateStudentById(student);
+        return studentMapper.findStudentById(student.getId());
     }
 }
