@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.spring.mapper.StudentMapper">
+    <resultMap id="result" type="org.example.spring.entity.Student">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="className" jdbcType="VARCHAR" property="className"/>
+        <result column="gender" jdbcType="TINYINT" property="gender"/>
+        <result column="is_deleted" jdbcType="BOOLEAN" property="is_deleted"/>
+
+    </resultMap>
+
+    <select id="findAllStudents" resultType="org.example.spring.entity.Student">
+        select *
+        from students
+        where is_deleted = 0;
+    </select>
+
+    <select id="findStudentById" resultType="org.example.spring.entity.Student">
+        select *
+        from students
+        where id = #{id};
+    </select>
+
+    <select id="findStudentByName" resultType="org.example.spring.entity.Student">
+        select *
+        from students
+        where name = #{name};
+    </select>
+
+    <update id="deleteStudentById">
+        update students
+        set is_deleted=1
+        where id = #{id};
+    </update>
+
+    <insert id="insertStudent" parameterType="org.example.spring.entity.Student">
+        INSERT INTO students (name, age, gender, address, className, is_deleted)
+        VALUES (#{name}, #{age}, #{gender}, #{address}, #{className}, #{is_deleted})
+    </insert>
+
+    <update id="updateStudentById" parameterType="org.example.spring.entity.Student">
+        UPDATE students
+        SET name = #{name},
+            age = #{age},
+            gender = #{gender},
+            address = #{address},
+            className = #{className},
+            is_deleted = #{is_deleted}
+        WHERE id = #{id}
+    </update>
+</mapper>
